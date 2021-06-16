@@ -1,0 +1,2 @@
+# Script per riavviare automaticamente solr al riavvio
+@reboot sleep 30 && docker-compose --env-file /root/docker-elk/.env -f /root/docker-elk/docker-compose.yml up -d

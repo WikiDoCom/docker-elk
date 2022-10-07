@@ -25,6 +25,12 @@ services:
       discovery.type: single-node
     networks:
       - elk
+    # https://stackoverflow.com/a/58571932/1501529
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "3"   # number of files or file count
+        max-size: "10m" # file size
 
   logstash:
     build:
@@ -52,6 +58,11 @@ services:
       - elk
     depends_on:
       - elasticsearch
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "3"   # number of files or file count
+        max-size: "10m" # file size
 
   kibana:
     build:
@@ -69,6 +80,11 @@ services:
       - elk
     depends_on:
       - elasticsearch
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "3"   # number of files or file count
+        max-size: "10m" # file size
 
 networks:
   elk:
